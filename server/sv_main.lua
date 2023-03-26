@@ -19,6 +19,8 @@ RegisterNetEvent('LENT-UPDShop:Server:PurchaseVehicle', function(label, vehicle,
     local cid = Player.PlayerData.citizenid
     local plate = GeneratePlate()
 
+    print(label, vehicle, hash, price, garage)
+
     if Player.PlayerData.money.cash >= price then
         Player.Functions.RemoveMoney('cash', price)
 

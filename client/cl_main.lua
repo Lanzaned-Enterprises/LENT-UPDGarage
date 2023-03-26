@@ -286,7 +286,8 @@ RegisterNetEvent('LENT-UPDShop:Client:PurchaseDialog', function(data)
             header = 'Confirm Purchase?',
             txt = 'Are you sure you want to buy this vehicle?',
             params = {
-                event = 'LENT-UPDShop:Server:PurchaseVehicle',
+                isServer = false,
+                event = 'LENT-UPDShop:Client:ConfirmPurchase',
                 args = {
 		            label = label,
                     vehicle = vehicle,
@@ -297,6 +298,16 @@ RegisterNetEvent('LENT-UPDShop:Client:PurchaseDialog', function(data)
             }
         },  
     })
+end)
+
+RegisterNetEvent('LENT-UPDShop:Client:ConfirmPurchase', function(data)
+    local label = data.label
+    local vehicle = data.vehicle
+    local hash = data.hash
+    local price = data.price
+    local garage = data.garage
+
+    TriggerServerEvent('LENT-UPDShop:Server:PurchaseVehicle', label, vehicle, hash, price, garage)
 end)
 
 RegisterNetEvent('LENT-UPDShop:Client:PhoneEmail', function(label, vehicle, hash, price, garage)

@@ -134,6 +134,7 @@ RegisterNetEvent('LENT-UPD:Client:VehicleOptions', function(data)
         },
         {
             header = 'Purchase Vehicle',
+            txt = "Vehicle Cost: " .. data.price,
             params = {
                 event = 'LENT-UPDShop:Client:PurchaseDialog',
                 args = {
